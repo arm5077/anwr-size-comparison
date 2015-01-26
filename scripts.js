@@ -25,28 +25,28 @@ $(document).ready(function(){
 		top: ($("html").outerHeight() - $(".dialogue").outerHeight()) / 2 
 	});
 	
-	$("button").click(function(){
+	$("#submit").click(function(){
 		if( $("#zip").val() ){
 			
-			$("button").addClass("inactive");
-			$("button").text("Searching");
+			$("#submit").addClass("inactive");
+			$("#submit").text("Searching");
 			
 			$.getJSON("http://nominatim.openstreetmap.org/search/" + $("#zip").val() + "?format=json&limit=1&countrycode=us", function(data){
 				if( data != "" ) {
 					console.log(data);
-					map.panTo([data[0].lat, data[0].lon]);
-					map.setZoom(8);
+					map.setView([data[0].lat, data[0].lon], 8);
 					drillCircle.setLatLng([data[0].lat, data[0].lon]);
 					anwrCircle.setLatLng([data[0].lat, data[0].lon]);
 					$(".dialogue").fadeOut(150);
+					$(".explainer").css("right", 0);
 				}
 				else {
-					alert("Couldn't find zip code");
-					$("#zip").val("");
-					$("button").text("Submit");
-					$("button").removeClass("inactive");
+					alert("Couldn't find zip code");	
 				}
 				
+				$("#zip").val("");
+				$("#submit").text("Submit");
+				$("#submit").removeClass("inactive");
 								
 			});
 			
@@ -56,6 +56,11 @@ $(document).ready(function(){
 			
 		}
 		
+	});
+	
+	$("#again").click(function(){
+		$(".explainer").css("right", "-100%");
+		$(".dialogue").fadeIn(150);
 	});
 	
 	
