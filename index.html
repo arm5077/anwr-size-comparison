@@ -6,8 +6,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <!-- Leaflet -->
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js"></script>
+
+<!-- Pym.js -->
+<script src="pym.js"></script>
 
 <link rel="stylesheet" href="styles.css" />
 
@@ -20,7 +23,7 @@
 	<div class = "explainer">
 		<ul class = "legend">
 			<li class="drill">Total ANWR area</li>
-			<li class="total">Size of area sought by drillers</li>
+			<li class="total">Size of "1002 Area"</li>
 		</ul>
 		<button id="again">Try another location</button>
 			
@@ -39,5 +42,9 @@
 </body>
 
 <script src="scripts.js"></script>
+<script>
+	var pymChild = new pym.Child();
+	setInterval(function(){ pymChild.sendHeight(); console.log("sending pym ping!")}, 1000);
+</script>
 
 </html>

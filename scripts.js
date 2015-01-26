@@ -31,7 +31,7 @@ $(document).ready(function(){
 			$("#submit").addClass("inactive");
 			$("#submit").text("Searching");
 			
-			$.getJSON("http://nominatim.openstreetmap.org/search/" + $("#zip").val() + "?format=json&limit=1&countrycode=us", function(data){
+			$.getJSON("https://nominatim.openstreetmap.org/search/" + $("#zip").val() + "?format=json&limit=1&countrycode=us", function(data){
 				if( data != "" ) {
 					console.log(data);
 					map.setView([data[0].lat, data[0].lon], 8);
